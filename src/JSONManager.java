@@ -5,31 +5,42 @@ import org.json.simple.JSONObject;
 
 public class JSONManager {
 
-	JSONManager(){}
+    JSONManager() {}
 
-	public static void main(String[] args){
-		JSONManager manager = new JSONManager();
+    public static void main(String[] args) {
+        JSONManager manager = new JSONManager();
 
-		System.out.println(manager.write(1,2,3,4));
+        System.out.println(manager.serverWrite(true,true));
 
-	}
-	
-	public String write(int x1, int y1, int x2, int y2){
-		
-		JSONObject obj = new JSONObject();
+    }
 
-		obj.put("x1",x1);
-        obj.put("y1",y1);
-        obj.put("x2",x2);
-        obj.put("y2",y2);
+    public String clientWrite(int x1, int y1, int x2, int y2) {
+
+        JSONObject obj = new JSONObject();
+
+        obj.put("x1", x1);
+        obj.put("y1", y1);
+        obj.put("x2", x2);
+        obj.put("y2", y2);
 
 
-		String out = obj.toString();
+        return obj.toString();
 
-		return out;
-	}
 
-	public JSONObject getArg(String arg) throws ParseException{
+    }
+
+    public String serverWrite(boolean playing, boolean draw) {
+
+        JSONObject obj = new JSONObject();
+
+        obj.put("playing", playing);
+        obj.put("draw", draw);
+
+        return obj.toString();
+    }
+
+
+    public JSONObject getArg(String arg) throws ParseException{
 		JSONParser parser = new JSONParser();
 		
 		JSONObject obj = (JSONObject) parser.parse(arg);
