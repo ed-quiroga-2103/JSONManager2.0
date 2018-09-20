@@ -9,10 +9,18 @@ import java.net.Socket;
 
 public class NetworkClient {
 
-    public static void main(String args[]) throws IOException{
+    public static void main(String args[])  throws IOException{
+
+        NetworkClient nC = new NetworkClient();
+
+        nC.sendData("123");
+
+    }
+
+    public String sendData(String data) throws IOException {
 
 
-        InetAddress address=InetAddress.getLocalHost();
+        InetAddress address= InetAddress.getLocalHost();
         Socket s1=null;
         String line=null;
         BufferedReader br=null;
@@ -20,7 +28,7 @@ public class NetworkClient {
         PrintWriter os=null;
 
         try {
-            s1=new Socket(address, 1978); // You can use static final constant PORT_NUM
+            s1=new Socket("192.168.1.138", 1978); // You can use static final constant PORT_NUM
             br= new BufferedReader(new InputStreamReader(System.in));
             is=new BufferedReader(new InputStreamReader(s1.getInputStream()));
             os= new PrintWriter(s1.getOutputStream());
@@ -35,17 +43,15 @@ public class NetworkClient {
 
         String response=null;
         try{
-            line=br.readLine();
-            while(line.compareTo("QUIT")!=0){
-                os.println(line);
-                os.flush();
-                response=is.readLine();
-                System.out.println("Server Response : "+response);
-                line=br.readLine();
 
-            }
+            line=data;
 
+            os.println(line);
+            os.flush();
+            response=is.readLine();
+            System.out.println("Server Response : "+response);
 
+            return response;
 
         }
         catch(IOException e){
@@ -59,5 +65,8 @@ public class NetworkClient {
 
         }
 
+        return null;
+
     }
+
 }
