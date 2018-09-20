@@ -1,14 +1,6 @@
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import 	java.util.Iterator;
-
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class JSONManager {
@@ -30,7 +22,6 @@ public class JSONManager {
         obj.put("y1",y1);
         obj.put("x2",x2);
         obj.put("y2",y2);
-
 
 
 		String out = obj.toString();
