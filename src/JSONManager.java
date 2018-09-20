@@ -8,10 +8,6 @@ public class JSONManager {
     JSONManager() {}
 
     public static void main(String[] args) {
-        JSONManager manager = new JSONManager();
-
-        System.out.println(manager.serverWrite(true,true));
-
     }
 
     public String clientWrite(int x1, int y1, int x2, int y2) {
@@ -49,3 +45,4 @@ public class JSONManager {
 		
 	}
 }
+
